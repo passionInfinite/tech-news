@@ -1,11 +1,11 @@
-class Headline {
+class TechCrunch {
   String title;
   String description;
   String url;
   String urlToImage;
   String publishedAt;
 
-  Headline(this.title, this.description, this.url, this.urlToImage,
+  TechCrunch(this.title, this.description, this.url, this.urlToImage,
       this.publishedAt);
 
   static String _getDate(String date) {
@@ -13,12 +13,12 @@ class Headline {
     return dateChunks[0];
   }
 
-  static List<Headline> getAll(List json) {
-    List<Headline> headlines = new List<Headline>();
+  static List<TechCrunch> getAll(List json) {
+    List<TechCrunch> techCrunchNews = new List<TechCrunch>();
     for (int i = 0; i < json.length; i++) {
-      headlines.add(new Headline(json[i]['title'], json[i]['description'],
+      techCrunchNews.add(new TechCrunch(json[i]['title'], json[i]['description'],
           json[i]['url'], json[i]['urlToImage'], _getDate(json[i]['publishedAt'])));
     }
-    return headlines;
+    return techCrunchNews;
   }
 }

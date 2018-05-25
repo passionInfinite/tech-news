@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_news_app/components/headlines.dart';
+import 'package:tech_news_app/components/sports_news.dart';
+import 'package:tech_news_app/components/tech_crunch_news.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -13,8 +15,8 @@ class Home extends StatelessWidget {
           bottom: new TabBar(
             tabs: [
               new Tab(text: "Headlines"),
-              new Tab(text: "Hacker News"),
-              new Tab(text: "Tech Crunch",),
+              new Tab(text: "Tech Crunch"),
+              new Tab(text: "Sports"),
             ]
           ),
           centerTitle: true,
@@ -22,6 +24,8 @@ class Home extends StatelessWidget {
         body: new TabBarView(
           children: <Widget>[
             new Headlines(),
+            new TechCrunchNews(),
+            new SportsNews()
           ],
         ),
       )

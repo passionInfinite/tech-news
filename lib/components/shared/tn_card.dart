@@ -6,6 +6,10 @@ class TNCard extends StatelessWidget {
 
   TNCard(this.snapshot, this.position);
 
+  _launchUrl(String url) {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Card(
@@ -20,12 +24,36 @@ class TNCard extends StatelessWidget {
             new Expanded(
               child: new Container(
                 margin: new EdgeInsets.all(20.0),
-                child: new Text(snapshot.data[position].title, style: new TextStyle(fontSize: 16.0)),
+                child: new Column(
+                  children: <Widget>[
+                    new Text(snapshot.data[position].title, style: new TextStyle(fontSize: 16.0)),
+                    new Container(
+                      margin: new EdgeInsets.only(top: 10.0),
+                      alignment: Alignment.topLeft,
+                      child: new Text(
+                          "${snapshot.data[position].publishedAt}",
+                          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0, color: Colors.grey.shade400)),
+                    ),
+                    new Container(
+                      margin: new EdgeInsets.only(top: 10.0),
+                      child: new InkWell(
+                        child: new Row(
+                          children: <Widget>[
+                            new Icon(Icons.info_outline, color: Colors.lightBlueAccent, size: 16.0),
+                            new Padding(padding: new EdgeInsets.only(left: 4.0)),
+                            new Text("Read More", style: new TextStyle(fontSize: 16.0, color: Colors.lightBlueAccent)),
+                          ],
+                        ),
+                        onTap: () => _launchUrl(snapshot.data[position].url),
+                      ),
+                    ),
+                  ],
+                )
               ),
             ),
             new Container(
-              height: 120.0,
-              width: 120.0,
+              height: 130.0,
+              width: 140.0,
               child: snapshot.data[position].urlToImage != null ?
               new Image.network(snapshot.data[position].urlToImage,fit: BoxFit.fill, alignment: Alignment.topLeft) :
               new Image.asset("assets/images/default.png", fit: BoxFit.fill, alignment: Alignment.topLeft),
