@@ -2,7 +2,6 @@
 
 Application which shows news related to technology and startups.
 
-## Getting Started
+## Screen Shot
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+![Screenshot](https://raw.githubusercontent.com/passioninfinite/tech-news/master/assets/images/app_ss.jpg)
